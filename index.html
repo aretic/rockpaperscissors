@@ -5,9 +5,207 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
 </head>
 <body>
+    <div id="buttons">
+        <button id="Rock" class="button">rock</button>
+        <button id="Paper" class="button">paper</button>
+        <button id="Scissors" class="button">sciccors</button>
+    </div>
+    <div id="selections">
+    </div>
+<script>
+//Add an event listener to the buttons that call your playRound function with the correct 
+//playerSelection every time a button is clicked. (you can keep the console.logs for this step)
+
+let playerSelection;
+let computerSelection;
+let winner;
+let round = 0;
+let playerWins = 0;
+let computerWins = 0;
+let ties = 0;
+let champion;
+
+function computer() {
+  let computer = Math.floor(Math.random()*3) + 1;
+    if (computer == 1) {
+      computer = 'Rock';
+    } else if (computer == 2) {
+      computer = 'Paper';
+    } else { computer = 'Scissors'; 
+  } computerSelection = computer;      
+};
+
+let player = document.querySelectorAll('button');
+player.forEach((button) => { 
+  button.addEventListener('click', play);
+  button.addEventListener('click', computer);
+  button.addEventListener('click', playGame);
+  //button.addEventListener('click', game);
+  //button.addEventListener('click', populateHTML);
+}
+);
+
+function play(event) {
+  playerSelection = event.target.id;
+};
+
+function playGame() {
+  round++;
+  console.log('Initating Game');
+  console.log(`Player Chose: ${playerSelection}`);
+  console.log(`Computer Chose: ${computerSelection}`);
+  console.log("initating combat...");
+  if (playerWins == 5 || computerWins == 5) {
+    return;
+
+  } else if ((computerSelection) == (playerSelection)) {
+        console.log(`DRAW! ${playerSelection} and ${computerSelection} ties!`)
+        winner = 'Tie';
+        ties++;
+        
+  } else if ((computerSelection == 'Rock') && (playerSelection == 'Scissors')) {
+    console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}!`) 
+    computerWins++;
+    winner = 'Computer';
     
+
+  } else if ((computerSelection == 'Paper') && (playerSelection == 'Rock')) {
+    console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}!`) 
+    winner = 'Computer';
+    computerWins++;
+ 
+  } else if ((computerSelection == 'Scissors') && (playerSelection == 'Paper')) {
+    console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}!`) 
+    computerWins++;
+    winner = 'Computer';
+
+  } else { console.log(`You win! ${playerSelection} beats ${computerSelection}`) 
+    winner = 'Player';
+    playerWins++;
+}  
+if (playerWins == 5 || computerWins == 5) {
+  if (playerWins > computerWins) { 
+        champion = 'Player is the champion!';
+    } else { 
+        champion = "Computer is the champion!";       
+} 
+}
+populateHTML();
+if (champion) {populateChampionHTML();
+}
+};
+
+
+/* function championDecider() {
+     if (playerWins > computerWins) { 
+        champion = 'Player is the champion!';
+    } else if (playerWins < computerWins) { 
+        champion = "Computer Player is the champion!";       
+}
+populateChampionHTML();
+}; */
+
+function populateChampionHTML() {
+  var championTag = document.createElement('div');
+  var championText = document.createTextNode(`${champion}`);
+  championTag.appendChild(championText);
+  var championElement = document.getElementById("selections");
+  championElement.appendChild(championTag);
+}
+
+function populateHTML() {
+  var roundsTag = document.createElement('div');
+  var roundsText = document.createTextNode(`Round: ${round}`);
+  roundsTag.appendChild(roundsText);
+  var roundsElement = document.getElementById("selections");
+  roundsElement.appendChild(roundsTag);
+
+  var playerTag = document.createElement('div');
+  var playerText = document.createTextNode(`Player Selected: ${playerSelection}`);
+  playerTag.appendChild(playerText);
+  var playerElement = document.getElementById("selections");
+  playerElement.appendChild(playerTag);
+
+  var computerTag = document.createElement('div');
+  var computerText = document.createTextNode(`Computer Selected: ${computerSelection}`);
+  computerTag.appendChild(computerText);
+  var computerElement = document.getElementById("selections");
+  computerElement.appendChild(computerTag);
+    
+  var roundwinnerTag = document.createElement('div');
+  var roundwinnerText = document.createTextNode(`Round Winner: ${winner}`);
+  roundwinnerTag.appendChild(roundwinnerText);
+  var roundwinnerElement = document.getElementById("selections");
+  roundwinnerElement.appendChild(roundwinnerTag);
+
+  var roundWinsTag = document.createElement('div');
+  var roundWinsText = document.createTextNode(`Player: ${playerWins} - Computer: ${computerWins} - Ties: ${ties}`);
+  roundWinsTag.appendChild(roundWinsText);
+  var roundWinsElement = document.getElementById("selections");
+  roundWinsElement.appendChild(roundWinsTag);
+}
+
+
+
+/* let computerSelection;
+
+const playRound = 
+playRound.forEach((play) => {
+  play.addEventListener('click', () => {
+    let playerSelection = play.id;
+    var playerTag = document.createElement('div');
+    var playerText = document.createTextNode(`Player Selected: ${playerSelection}`);
+    playerTag.appendChild(playerText);
+    var playerElement = document.getElementById("selections");
+    playerElement.appendChild(playerTag);
+    console.log(playerSelection);
+    return playerSelection;
+  });
+ */
+/*   function playGame(playerSelection, computerSelection) {
+      if ((computerSelection) == (playerSelection)) {
+        console.log(`DRAW! ${playerSelection} and ${computerSelection} ties!`)
+        return winner = 'Tie';
+    } else if ((computerSelection == 'Paper') && (playerSelection == 'Rock')) {
+        console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}!`) 
+        return winner = 'Computer';
+    } else if ((computerSelection == 'Rock') && (playerSelection == 'Scissors')) {
+        console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}!`) 
+        return winner = 'Computer';
+    } else if ((computerSelection == 'Scissors') && (playerSelection == 'Paper')) {
+        console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}!`) 
+        return winner = 'Computer';
+    } else console.log(`You win! ${playerSelection} beats ${computerSelection}`) 
+    return winner = 'Player';
+}
+  }
+ */
+  /*   play.addEventListener('click', () => {
+    
+ */
+
+/* 
+function playGame(event) {
+if (playerSelection == 'Invalid Entry') { 
+    console.log('Game Aborted');
+     return winner = 'Aborted';
+    } else if ((computer) == (playerSelection)) {
+        console.log(`DRAW! ${playerSelection} and ${computer} ties!`)
+        return winner = 'Tie';
+    } else if ((computer == 'Paper') && (playerSelection == 'Rock')) {
+        console.log(`Computer Wins! ${computer} beats ${playerSelection}!`) 
+        return winner = 'Computer';
+    } else if ((computer == 'Rock') && (playerSelection == 'Scissors')) {
+        console.log(`Computer Wins! ${computer} beats ${playerSelection}!`) 
+        return winner = 'Computer';
+    } else if ((computer == 'Scissors') && (playerSelection == 'Paper')) {
+        console.log(`Computer Wins! ${computer} beats ${playerSelection}!`) 
+        return winner = 'Computer';
+    } else console.log(`You win! ${playerSelection} beats ${computer}`) 
+    return winner = 'Player';
+} */
+</script>
 </body>
 </html>
