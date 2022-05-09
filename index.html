@@ -42,9 +42,6 @@ player.forEach((button) => {
   button.addEventListener('click', play);
   button.addEventListener('click', computer);
   button.addEventListener('click', playGame);
-  //button.addEventListener('click', game);
-  //button.addEventListener('click', populateHTML);
-}
 );
 
 function play(event) {
@@ -97,16 +94,6 @@ if (champion) {populateChampionHTML();
 }
 };
 
-
-/* function championDecider() {
-     if (playerWins > computerWins) { 
-        champion = 'Player is the champion!';
-    } else if (playerWins < computerWins) { 
-        champion = "Computer Player is the champion!";       
-}
-populateChampionHTML();
-}; */
-
 function populateChampionHTML() {
   var championTag = document.createElement('div');
   var championText = document.createTextNode(`${champion}`);
@@ -148,64 +135,6 @@ function populateHTML() {
 }
 
 
-
-/* let computerSelection;
-
-const playRound = 
-playRound.forEach((play) => {
-  play.addEventListener('click', () => {
-    let playerSelection = play.id;
-    var playerTag = document.createElement('div');
-    var playerText = document.createTextNode(`Player Selected: ${playerSelection}`);
-    playerTag.appendChild(playerText);
-    var playerElement = document.getElementById("selections");
-    playerElement.appendChild(playerTag);
-    console.log(playerSelection);
-    return playerSelection;
-  });
- */
-/*   function playGame(playerSelection, computerSelection) {
-      if ((computerSelection) == (playerSelection)) {
-        console.log(`DRAW! ${playerSelection} and ${computerSelection} ties!`)
-        return winner = 'Tie';
-    } else if ((computerSelection == 'Paper') && (playerSelection == 'Rock')) {
-        console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}!`) 
-        return winner = 'Computer';
-    } else if ((computerSelection == 'Rock') && (playerSelection == 'Scissors')) {
-        console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}!`) 
-        return winner = 'Computer';
-    } else if ((computerSelection == 'Scissors') && (playerSelection == 'Paper')) {
-        console.log(`Computer Wins! ${computerSelection} beats ${playerSelection}!`) 
-        return winner = 'Computer';
-    } else console.log(`You win! ${playerSelection} beats ${computerSelection}`) 
-    return winner = 'Player';
-}
-  }
- */
-  /*   play.addEventListener('click', () => {
-    
- */
-
-/* 
-function playGame(event) {
-if (playerSelection == 'Invalid Entry') { 
-    console.log('Game Aborted');
-     return winner = 'Aborted';
-    } else if ((computer) == (playerSelection)) {
-        console.log(`DRAW! ${playerSelection} and ${computer} ties!`)
-        return winner = 'Tie';
-    } else if ((computer == 'Paper') && (playerSelection == 'Rock')) {
-        console.log(`Computer Wins! ${computer} beats ${playerSelection}!`) 
-        return winner = 'Computer';
-    } else if ((computer == 'Rock') && (playerSelection == 'Scissors')) {
-        console.log(`Computer Wins! ${computer} beats ${playerSelection}!`) 
-        return winner = 'Computer';
-    } else if ((computer == 'Scissors') && (playerSelection == 'Paper')) {
-        console.log(`Computer Wins! ${computer} beats ${playerSelection}!`) 
-        return winner = 'Computer';
-    } else console.log(`You win! ${playerSelection} beats ${computer}`) 
-    return winner = 'Player';
-} */
 </script>
 </body>
 </html>
