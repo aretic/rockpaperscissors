@@ -42,7 +42,7 @@ player.forEach((button) => {
   button.addEventListener('click', play);
   button.addEventListener('click', computer);
   button.addEventListener('click', playGame);
-);
+});
 
 function play(event) {
   playerSelection = event.target.id;
@@ -133,7 +133,6 @@ function populateHTML() {
   var roundWinsElement = document.getElementById("selections");
   roundWinsElement.appendChild(roundWinsTag);
 }
-//Lol
 
 </script>
 </body>
